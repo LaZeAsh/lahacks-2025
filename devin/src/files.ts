@@ -101,7 +101,7 @@ export const writeFile: ToolConfig = {
                     .content(`Wrote ${numLines} lines to ${fileName}`)
                     .build()
             }
-        } catch (error) {
+        } catch (error: any) {
             return {
                 text: `Failed to write to ${fileName}: ${error.message}`,
                 data: {

@@ -12,32 +12,37 @@ import {
   LayoutUIBuilder,
 } from "@dainprotocol/utils";
 
+import { writeCode } from "./code";
+import { readGitRepo, pushToGitRepo, getGithubIssues, closeGithubIssue } from "./gh";
+// import { readFile, writeFile } from "./files";
+// import { setupRepo } from "./setup";
+
 const port = Number(process.env.PORT) || 2022;
+
+
 
 const dainService = defineDAINService({
   metadata: {
-    title: "Weather DAIN Service",
+    title: "Devin, AI Software Engineer",
     description:
-      "A DAIN service for current weather and forecasts using Open-Meteo API",
+      "A DAIN service to be an AI Software Engineer",
     version: "1.0.0",
-    author: "Your Name",
-    tags: ["weather", "forecast", "dain"],
+    author: "Ayush",
+    tags: ["AI", "Software", "Engineer"],
     logo: "https://cdn-icons-png.flaticon.com/512/252/252035.png",
   },
   exampleQueries: [
     {
-      category: "Weather",
+      category: "Software",
       queries: [
-        "What is the weather in Tokyo?",
-        "What is the weather in San Francisco?",
-        "What is the weather in London?",
+        "Solve all of the github issues in this repository"
       ],
     },
   ],
   identity: {
     apiKey: process.env.DAIN_API_KEY,
   },
-  tools: [],
+  tools: [writeCode, getGithubIssues, readGitRepo, pushToGitRepo, closeGithubIssue],
 });
 
 dainService.startNode({ port: port }).then(({ address }) => {

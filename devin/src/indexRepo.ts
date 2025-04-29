@@ -17,13 +17,13 @@ import {
 
 const client = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
-export const readFile: ToolConfig = {
-    id: "read-file",
-    name: "Read File",
-    description: "Given the File it reads the content of the file",
+export const indexRepo: ToolConfig = {
+    id: "index-repo",
+    name: "Index Repositories",
+    description: "Given the repositories it indexes the repository for better results",
     input: z
         .object({
-            fileName: z.string().describe("The file path")
+            repositoryURL: z.string().describe("")
         })
         .describe("Input parameters to read the contents of the file"),
     output: z
@@ -103,7 +103,7 @@ export const writeFile: ToolConfig = {
                     .content(`Wrote ${numLines} lines to ${fileName}`)
                     .build()
             }
-        } catch (error) {
+        } catch (error: any) {
             return {
                 text: `Failed to write to ${fileName}: ${error.message}`,
                 data: {

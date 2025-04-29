@@ -12,7 +12,7 @@ import {
   LayoutUIBuilder,
 } from "@dainprotocol/utils";
 
-const port = Number(process.env.PORT) || 2022;
+const port = Number(process.env.PORT) || 2023;
 
 // Import tools
 
@@ -21,11 +21,11 @@ import { validateIdea } from "./idea";
 
 const dainService = defineDAINService({
   metadata: {
-    title: "AI Product Manager",
+    title: "Devin, AI Product Manager",
     description:
       "A DAIN service to be an AI Product Manager",
     version: "1.0.0",
-    author: "Ayush",
+    author: "Ayush (LaZeAsh)",
     tags: ["AI", "Product", "Manager"],
     logo: "https://cdn-icons-png.flaticon.com/512/252/252035.png",
   },
@@ -42,7 +42,6 @@ const dainService = defineDAINService({
   identity: {
     apiKey: process.env.DAIN_API_KEY,
   },
-  // tools: [getWeatherConfig, getWeatherForecastConfig],
   tools: [newGHProject, newGHIssue, validateIdea],
 });
 
